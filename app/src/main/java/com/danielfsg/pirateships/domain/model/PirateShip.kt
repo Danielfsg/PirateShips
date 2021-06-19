@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class PirateShipEntity(
+data class PirateShip(
     val id: Int,
     val title: String,
     val description: String,

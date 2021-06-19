@@ -2,7 +2,7 @@ package com.danielfsg.pirateships.data.repository
 
 import com.danielfsg.pirateships.data.mapper.PirateShipMapper
 import com.danielfsg.pirateships.data.remote.RetrofitService
-import com.danielfsg.pirateships.domain.model.PirateShipEntity
+import com.danielfsg.pirateships.domain.model.PirateShip
 import com.danielfsg.pirateships.domain.repository.Repository
 import io.reactivex.rxjava3.core.Single
 import timber.log.Timber
@@ -12,7 +12,7 @@ class DataRepository(
     private val mapper: PirateShipMapper
 ) : Repository {
 
-    override fun getPirateShips(): Single<List<PirateShipEntity>> {
+    override fun getPirateShips(): Single<List<PirateShip>> {
         Timber.d("[DataRepository]  -  Get Pirate Ships")
         return retrofitService.getPirateShips()
             .toFlowable()
