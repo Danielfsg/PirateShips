@@ -1,5 +1,6 @@
 package com.danielfsg.pirateships.di
 
+import com.danielfsg.pirateships.data.remote.RetrofitService
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -49,8 +50,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesGsonConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
+    fun providesGsonConverterFactory(gson: Gson): GsonConverterFactory {
+        return GsonConverterFactory.create(gson)
     }
 
     @Provides
@@ -64,6 +65,12 @@ class NetworkModule {
     fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor()
             .also { it.level = HttpLoggingInterceptor.Level.BODY }
+    }
+
+    @Provides
+    @Singleton
+    fun provideService(retrofit: Retrofit): RetrofitService {
+        return retrofit.create(RetrofitService::class.java)
     }
 
 }
