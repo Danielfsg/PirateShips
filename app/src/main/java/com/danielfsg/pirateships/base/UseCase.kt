@@ -1,7 +1,7 @@
 package com.danielfsg.pirateships.base
 
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class UseCase {
     protected var lastDisposable: Disposable? = null

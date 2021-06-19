@@ -4,7 +4,8 @@ import com.danielfsg.pirateships.data.mapper.PirateShipMapper
 import com.danielfsg.pirateships.data.remote.RetrofitService
 import com.danielfsg.pirateships.domain.model.PirateShipEntity
 import com.danielfsg.pirateships.domain.repository.Repository
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
+import timber.log.Timber
 
 class DataRepository(
     private val retrofitService: RetrofitService,
@@ -12,11 +13,14 @@ class DataRepository(
 ) : Repository {
 
     override fun getPirateShips(): Single<List<PirateShipEntity>> {
+        Timber.d("[DataRepository]  -  Get Pirate Ships")
         return retrofitService.getPirateShips()
             .toFlowable()
             .flatMapIterable { it.ships }
             .map { mapper.mapToEntity(it) }
             .toList()
+            .doOnSuccess { Timber.d("[DataRepository]  -  Success fetching the pirate ships") }
+            .doOnError { Timber.e(it, "[DataRepository]  -  Error") }
     }
 
 }
