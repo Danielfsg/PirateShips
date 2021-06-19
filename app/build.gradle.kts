@@ -47,6 +47,20 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.28-alpha")
     kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
 
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //okhttp
+    implementation ("com.squareup.okhttp3:okhttp:4.8.1")
+    implementation ("com.google.code.gson:gson:2.8.6")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.8.1")
+
+    //rx-java
+    implementation ("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation ("io.reactivex.rxjava2:rxjava:2.2.9")
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.5.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
