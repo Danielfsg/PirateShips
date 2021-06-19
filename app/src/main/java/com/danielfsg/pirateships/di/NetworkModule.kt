@@ -4,6 +4,7 @@ import com.danielfsg.pirateships.BuildConfig
 import com.danielfsg.pirateships.data.mapper.PirateShipMapper
 import com.danielfsg.pirateships.data.remote.RetrofitService
 import com.danielfsg.pirateships.data.repository.DataRepository
+import com.danielfsg.pirateships.domain.repository.Repository
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -85,7 +86,7 @@ class NetworkModule {
     fun provideDataRepository(
         retrofitService: RetrofitService,
         mapper: PirateShipMapper
-    ): DataRepository {
+    ): Repository {
         return DataRepository(retrofitService, mapper)
     }
 

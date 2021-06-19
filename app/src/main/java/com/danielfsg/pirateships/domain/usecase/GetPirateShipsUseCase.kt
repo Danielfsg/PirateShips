@@ -10,7 +10,7 @@ class GetPirateShipsUseCase @Inject constructor(
     private val repository: Repository
 ) : SingleUseCase<List<PirateShipEntity>>() {
 
-    override fun buildUseCaseSingle(): Single<List<PirateShipEntity>> {
+    override fun build(): Single<List<PirateShipEntity>> {
         return repository.getPirateShips()
     }
 }
