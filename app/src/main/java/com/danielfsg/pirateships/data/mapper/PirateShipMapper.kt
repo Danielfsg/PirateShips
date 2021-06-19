@@ -6,14 +6,14 @@ import javax.inject.Inject
 
 class PirateShipMapper @Inject constructor() {
 
-    fun mapToEntity(pirateShip: PirateShip): PirateShipEntity {
+    fun mapToEntity(pirateShip: PirateShip?): PirateShipEntity {
         return PirateShipEntity(
-            id = pirateShip.id,
-            title = pirateShip.title,
-            description = pirateShip.description,
-            price = pirateShip.price,
-            image = pirateShip.image,
-            greetingType = pirateShip.greetingType.orEmpty()
+            id = pirateShip?.id ?: 0,
+            title = pirateShip?.title.orEmpty(),
+            description = pirateShip?.description.orEmpty(),
+            price = pirateShip?.price ?: 0,
+            image = pirateShip?.image.orEmpty(),
+            greetingType = pirateShip?.greetingType.orEmpty()
         )
     }
 

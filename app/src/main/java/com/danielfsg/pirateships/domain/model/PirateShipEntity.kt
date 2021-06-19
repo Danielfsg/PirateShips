@@ -1,5 +1,9 @@
 package com.danielfsg.pirateships.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class PirateShipEntity(
     val id: Int,
     val title: String,
@@ -7,4 +11,4 @@ data class PirateShipEntity(
     val price: Int,
     val image: String,
     val greetingType: String
-)
+):Parcelable

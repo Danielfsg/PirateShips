@@ -16,6 +16,10 @@ class DataRepository(
         Timber.d("[DataRepository]  -  Get Pirate Ships")
         return retrofitService.getPirateShips()
             .toFlowable()
+            .map { pirateShips ->
+                pirateShips.ships.removeAll { it == null }
+                pirateShips
+            }
             .flatMapIterable { it.ships }
             .map { mapper.mapToEntity(it) }
             .toList()
