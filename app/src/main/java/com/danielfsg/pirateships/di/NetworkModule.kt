@@ -1,6 +1,8 @@
 package com.danielfsg.pirateships.di
 
+import com.danielfsg.pirateships.data.mapper.PirateShipMapper
 import com.danielfsg.pirateships.data.remote.RetrofitService
+import com.danielfsg.pirateships.data.repository.DataRepository
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -34,9 +36,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesOkHttp(
-        httpLoggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClient {
+    fun providesOkHttp(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .build()
@@ -71,6 +71,15 @@ class NetworkModule {
     @Singleton
     fun provideService(retrofit: Retrofit): RetrofitService {
         return retrofit.create(RetrofitService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataRepository(
+        retrofitService: RetrofitService,
+        mapper: PirateShipMapper
+    ): DataRepository {
+        return DataRepository(retrofitService, mapper)
     }
 
 }
