@@ -11,7 +11,7 @@
         android:label="PirateShipsListFragment"
         tools:layout="@layout/fragment_pirate_ships_list">
         <action
-            android:id="@+id/action_pirateShipsListFragment_to_pirateShipDetailFragment"
+            android:id="@+id/action_open_detail"
             app:destination="@id/pirateShipDetailFragment"
             app:launchSingleTop="false" />
     </fragment>

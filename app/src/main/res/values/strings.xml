@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Pirate Ships</string>
-    <string name="card_price">%d €</string>
     <string name="content_description_pirate_boat_image">Pirate Boat Image</string>
+    <string name="detail_title_label">Title</string>
+    <string name="detail_label_description">Description</string>
+    <string name="detail_label_price">Price</string>
+    <string name="content_description_pirate_boat_greeting">Pirate Boat Greeting</string>
 </resources>

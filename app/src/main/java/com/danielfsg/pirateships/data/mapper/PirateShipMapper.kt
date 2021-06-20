@@ -11,10 +11,18 @@ class PirateShipMapper @Inject constructor() {
             id = pirateShip?.id ?: 0,
             title = pirateShip?.title.orEmpty(),
             description = pirateShip?.description.orEmpty(),
-            price = pirateShip?.price ?: 0,
+            price = pirateShip?.price?.let { String.format("%d €", it) }.orEmpty(),
             image = pirateShip?.image.orEmpty(),
-            greetingType = pirateShip?.greetingType.orEmpty()
+            greetingType = mapGreetingType(pirateShip?.greetingType)
         )
     }
 
+    private fun mapGreetingType(value: String?): String {
+        return when (value) {
+            "ay" -> "Aye Aye!"
+            "ar" -> "Arrr!"
+            "yo" -> "Yo ho hooo!"
+            else -> "Ahoi!"
+        }
+    }
 }

@@ -8,7 +8,7 @@ data class PirateShip(
     val id: Int,
     val title: String,
     val description: String,
-    val price: Int,
+    val price: String,
     val image: String,
     val greetingType: String
 ):Parcelable

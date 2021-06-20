@@ -2,8 +2,8 @@ package com.danielfsg.pirateships.presentation.shiplist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -29,22 +29,19 @@ class PirateShipsListAdapter :
 
         fun bind(pirateShip: PirateShip) {
             binding.title.text = pirateShip.title
-            binding.price.text =
-                String.format(itemView.context.getString(R.string.card_price), pirateShip.price)
+            binding.price.text = pirateShip.price
+            binding.image.transitionName = pirateShip.id.toString()
 
-            binding.root.setOnClickListener {
-                it.findNavController().navigate(
-                    R.id.action_pirateShipsListFragment_to_pirateShipDetailFragment,
-                    bundleOf("pirateShip" to pirateShip)
-                )
-            }
+            val action = PirateShipsListFragmentDirections.actionOpenDetail(pirateShip)
+            val extras = FragmentNavigatorExtras(binding.image to binding.image.transitionName)
+            binding.root.setOnClickListener { it.findNavController().navigate(action, extras) }
 
             Glide.with(itemView.context)
                 .load(pirateShip.image)
                 .centerCrop()
-                .placeholder(R.drawable.ic_baseline_terrain_24)
-                .error(R.drawable.ic_baseline_terrain_24)
-                .fallback(R.drawable.ic_baseline_terrain_24)
+                .placeholder(R.drawable.ic_baseline_directions_boat_24)
+                .error(R.drawable.ic_baseline_directions_boat_24)
+                .fallback(R.drawable.ic_baseline_directions_boat_24)
                 .into(binding.image)
 
 
