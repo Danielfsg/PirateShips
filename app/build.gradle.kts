@@ -57,6 +57,8 @@ dependencies {
     //Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("com.github.bumptech.glide:okhttp3-integration:4.12.0")
+    implementation ("com.github.bumptech.glide:annotations:4.12.0")
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
