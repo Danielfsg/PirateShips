@@ -19,7 +19,7 @@
         android:id="@+id/pirateShipDetailFragment"
         android:name="com.danielfsg.pirateships.presentation.shipdetail.PirateShipDetailFragment"
         android:label="PirateShipDetailFragment"
-        tools:layout="@layout/fragment_pirate_ship_details" >
+        tools:layout="@layout/fragment_pirate_ship_details">
         <argument
             android:name="pirateShip"
             app:argType="com.danielfsg.pirateships.domain.model.PirateShip" />

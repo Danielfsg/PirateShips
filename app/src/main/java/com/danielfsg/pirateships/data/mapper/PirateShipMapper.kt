@@ -11,7 +11,7 @@ class PirateShipMapper @Inject constructor() {
             id = pirateShip?.id ?: 0,
             title = pirateShip?.title.orEmpty(),
             description = pirateShip?.description.orEmpty(),
-            price = pirateShip?.price?.let { String.format("%d €", it) }.orEmpty(),
+            price = pirateShip?.price?.let { String.format("%d Doubloons", it) }.orEmpty(),
             image = pirateShip?.image.orEmpty(),
             greetingType = mapGreetingType(pirateShip?.greetingType)
         )

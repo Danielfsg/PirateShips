@@ -9,10 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.danielfsg.pirateships.R
 import com.danielfsg.pirateships.databinding.FragmentPirateShipDetailsBinding
 import com.danielfsg.pirateships.domain.model.PirateShip
+import com.danielfsg.pirateships.presentation.extention.loadUrlImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,13 +51,7 @@ class PirateShipDetailFragment : Fragment() {
         binding.greeting.setOnClickListener { showGreeting(pirateShip.greetingType) }
         binding.image.transitionName = pirateShip.id.toString()
 
-        Glide.with(requireContext())
-            .load(pirateShip.image)
-            .centerCrop()
-            .placeholder(R.drawable.ic_baseline_directions_boat_24)
-            .error(R.drawable.ic_baseline_directions_boat_24)
-            .fallback(R.drawable.ic_baseline_directions_boat_24)
-            .into(binding.image)
+        binding.image.loadUrlImage(requireContext(), pirateShip.image)
     }
 
     private fun showGreeting(text: String) {

@@ -7,10 +7,9 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.danielfsg.pirateships.R
 import com.danielfsg.pirateships.databinding.ItemListBinding
 import com.danielfsg.pirateships.domain.model.PirateShip
+import com.danielfsg.pirateships.presentation.extention.loadUrlImage
 
 class PirateShipsListAdapter :
     ListAdapter<PirateShip, RecyclerView.ViewHolder>(PirateShipsListAdapterCallBack()) {
@@ -31,19 +30,11 @@ class PirateShipsListAdapter :
             binding.title.text = pirateShip.title
             binding.price.text = pirateShip.price
             binding.image.transitionName = pirateShip.id.toString()
+            binding.image.loadUrlImage(itemView.context, pirateShip.image)
 
             val action = PirateShipsListFragmentDirections.actionOpenDetail(pirateShip)
             val extras = FragmentNavigatorExtras(binding.image to binding.image.transitionName)
             binding.root.setOnClickListener { it.findNavController().navigate(action, extras) }
-
-            Glide.with(itemView.context)
-                .load(pirateShip.image)
-                .centerCrop()
-                .placeholder(R.drawable.ic_baseline_directions_boat_24)
-                .error(R.drawable.ic_baseline_directions_boat_24)
-                .fallback(R.drawable.ic_baseline_directions_boat_24)
-                .into(binding.image)
-
 
         }
     }
