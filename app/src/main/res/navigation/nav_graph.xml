@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pirateShipsListFragment">
+
+    <fragment
+        android:id="@+id/pirateShipsListFragment"
+        android:name="com.danielfsg.pirateships.presentation.shiplist.PirateShipsListFragment"
+        android:label="PirateShipsListFragment"
+        tools:layout="@layout/fragment_pirate_ships_list">
+        <action
+            android:id="@+id/action_pirateShipsListFragment_to_pirateShipDetailFragment"
+            app:destination="@id/pirateShipDetailFragment"
+            app:launchSingleTop="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/pirateShipDetailFragment"
+        android:name="com.danielfsg.pirateships.presentation.shipdetail.PirateShipDetailFragment"
+        android:label="PirateShipDetailFragment"
+        tools:layout="@layout/fragment_pirate_ship_details" >
+        <argument
+            android:name="pirateShip"
+            app:argType="com.danielfsg.pirateships.domain.model.PirateShip" />
+    </fragment>
+</navigation>
