@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class PirateShipMapper @Inject constructor() {
 
-    fun mapToEntity(pirateShip: PirateShipEntity?): PirateShip {
+    fun mapToPirateShip(pirateShip: PirateShipEntity?): PirateShip {
         return PirateShip(
             id = pirateShip?.id ?: 0,
             title = pirateShip?.title.orEmpty(),

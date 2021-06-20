@@ -21,10 +21,11 @@ class DataRepository(
                 pirateShips
             }
             .flatMapIterable { it.ships }
-            .map { mapper.mapToEntity(it) }
+            .map { mapper.mapToPirateShip(it) }
             .toList()
             .doOnSuccess { Timber.d("[DataRepository]  -  Success fetching the pirate ships") }
             .doOnError { Timber.e(it, "[DataRepository]  -  Error") }
+            .onErrorReturn { listOf() }
     }
 
 }

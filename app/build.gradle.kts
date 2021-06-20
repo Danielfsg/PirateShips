@@ -42,6 +42,10 @@ android {
         viewBinding = true
     }
 
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
+
 }
 
 dependencies {
@@ -49,6 +53,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0-beta02")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     //ktx
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.activity:activity-ktx:1.2.3")
@@ -57,8 +62,8 @@ dependencies {
     //Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
-    implementation ("com.github.bumptech.glide:okhttp3-integration:4.12.0")
-    implementation ("com.github.bumptech.glide:annotations:4.12.0")
+    implementation("com.github.bumptech.glide:okhttp3-integration:4.12.0")
+    implementation("com.github.bumptech.glide:annotations:4.12.0")
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
@@ -81,6 +86,10 @@ dependencies {
     implementation("com.jakewharton.timber:timber:4.7.1")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:3.11.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation("org.mockito:mockito-inline:3.11.1")
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
